@@ -1,10 +1,11 @@
-const baseURL = "http://localhost:4000/update_type";
+const baseURL = "http://localhost:4000/switch_extension?extension=";
+const swipeURL = "http://localhost:4000/swipe?direction=";
 import React from 'react';
 import axios from 'axios';
 import "./buttons.css"
 
 
-class TypeUpdater extends React.Component {
+class ExtensionUpdater extends React.Component {
 
     constructor(props){
         super(props);
@@ -14,11 +15,11 @@ class TypeUpdater extends React.Component {
         this.click = this.click.bind(this);
     }
 
-    click(newType) {
-
-        axios.post(baseURL, newType)
+    click(extension) {
+        this.setState({ isLoading: true });
+        axios.get(baseURL+extension, )
             .then((response) => {
-                console.log(response.data)
+                window.location.reload();
             })
             .catch((err) => {
                 console.log(err);
@@ -36,7 +37,7 @@ class TypeUpdater extends React.Component {
     }
 }
 
-export default TypeUpdater;
+export default ExtensionUpdater;
 /*
 
     render(){

@@ -3,7 +3,7 @@ import logo from "./logo.svg";
 import ImageComponent from "./imageComponent.js";
 import UploadImgForm from "./UploadImgForm";
 import "./App.css";
-import TypeUpdater from "./typeUpdater";
+import ExtensionUpdater from "./extensionUpdater";
 import OpenUploadFormBtn from "./OpenUploadFormBtn";
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
                 <img src={logo} className="App-logo" alt="logo" />
                 <p style={{color: "black"}}>Logo???</p>
               </div>
-              <TypeUpdater />
+              <ExtensionUpdater />
               <UploadImgForm/>
           </header>
           <ImageComponent />

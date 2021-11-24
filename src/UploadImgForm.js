@@ -24,7 +24,7 @@ class UploadImgForm extends Component {
     onSubmit = e => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('image_file', this.state.images);
+        formData.append('image_file', this.state.images[0]);
         formData.append('email', e.target.email.value);
         formData.append('login', e.target.login.value);
         axios
@@ -50,7 +50,7 @@ class UploadImgForm extends Component {
                     <label htmlFor="email">Login: </label>
                     <input type="text" name="login"/>
                     <label htmlFor="image_file">Choose img: </label>
-                    <input type="file" name="image_file" onChange={this.onImageChange} alt="image" multiple/>
+                    <input type="file" name="image_file" onChange={this.onImageChange} alt="image"/>
                     <br />
                     <button type="submit">Send</button>
                 </form>
