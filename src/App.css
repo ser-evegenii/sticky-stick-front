@@ -67,3 +67,31 @@
   margin: 0;
   padding-right: 15px;
 }
+
+
+
+button {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.album {
+  background-color: #EFEFEF;
+}
+
+.active {
+  font-weight: bold;
+  background-color: #4CAF50;
+}
+
+/*
+.album>span:after {
+  content: ' (an album)';
+}
+
+.active>span:after {
+  content: ' ACTIVE';
+}
+
+
+ */

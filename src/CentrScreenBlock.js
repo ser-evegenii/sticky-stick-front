@@ -5,7 +5,7 @@ import "./buttons.css";
 import ImgDetails from "./imgDetails";
 import HeartIcon from "./heartIcon";
 
-class ImageComponent extends Component {
+class CentrScreenBlock extends Component {
     constructor(props){
         super(props);
         this.baseUrl = "http://localhost:4000/load?id="
@@ -23,9 +23,11 @@ class ImageComponent extends Component {
                 console.log(err);
             });
     }
+
     handleCallback = (childData) =>{
         this.setState({name: this.baseUrl + childData})
     }
+
 
     render() {
         const {name} = this.state;
@@ -36,7 +38,7 @@ class ImageComponent extends Component {
                 <React.Fragment>
                     <ButtonComponent parentCallback = {this.handleCallback} directionSymbol = "&laquo;" direction = "previous"/>
                     <div>
-                        <img className="swipeBtn" src={name} alt="image" />
+                        <div><img className="swipeBtn" src={name} alt="image" /></div>
                         <ImgDetails/>
                         <HeartIcon/>
                     </div>
@@ -48,7 +50,7 @@ class ImageComponent extends Component {
     }
 }
 
-export default ImageComponent;
+export default CentrScreenBlock;
 
 
 /*

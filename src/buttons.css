@@ -29,6 +29,11 @@
 
 .updateTypeBtn {
     margin: 50%;
+    background-color: #4CAF50;
+}
+
+.touchedBtn {
+    background-color: #4CAF50;
 }
 
 .hearts {

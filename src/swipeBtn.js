@@ -28,9 +28,9 @@ class SwipeButton extends React.Component {
 
     render() {
         const {direction} = this.props;
-        const {directionSymbol} = this.props;
+        const {directionSymbol: directionMark} = this.props;
         return  (
-                <div className="swipeBtnBlock"><button className="swipeBtn" onClick={() => this.click({direction})} > {direction} {directionSymbol} </button></div>
+                <div className="swipeBtnBlock"><button className="swipeBtn" onClick={() => this.click({direction})} > {direction} {directionMark} </button></div>
         );
     }
 }

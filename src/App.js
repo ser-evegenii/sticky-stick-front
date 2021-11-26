@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
-import ImageComponent from "./imageComponent.js";
+import ImageComponent from "./CentrScreenBlock.js";
 import UploadImgForm from "./UploadImgForm";
 import "./App.css";
 import ExtensionUpdater from "./extensionUpdater";
@@ -19,24 +19,7 @@ class App extends Component {
               <UploadImgForm/>
           </header>
           <ImageComponent />
-
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <OpenUploadFormBtn/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
       </div>
-
     );
   }
 }
