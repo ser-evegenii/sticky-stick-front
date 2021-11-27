@@ -1,8 +1,9 @@
 const baseURL = "http://localhost:4000/switch_extension";
 const swipeURL = "http://localhost:4000/swipe?direction=";
 import React from 'react';
-import axios from 'axios';
 import "./buttons.css"
+
+import {AppContextConsumer} from "./AppContext";
 
 class ExtensionUpdater extends React.Component {
 
@@ -11,73 +12,36 @@ class ExtensionUpdater extends React.Component {
         this.state = {
             activeIndex: null
         };
-        this.click = this.click.bind(this);
+    }
+    componentDidMount() {
+
     }
 
-    click(index, extension) {
-        let data = JSON.stringify({
-            "extension": extension,
-        })
-        // Send a POST request
-        axios({
-            method: 'post',
-            url: baseURL,
-            data: data,
-            headers: {
-                "Content-Type": "application/json"
-            }
-        }).then((response) => {
-            this.setState({ activeIndex: index })
-            console.log(response.status)
-        })
-            .catch((error) => {
-                console.log(error)
-            })}
     //handleClick = (index) => this.setState({ activeIndex: index })
 
     render() {
         return  (
+            <AppContextConsumer>
+                {context => (
             <div className="updateTypeBlockMain">
-                <MyClickable extension="gif" index={0} isActive={ this.state.activeIndex===0 } onClick={ this.click }/>
-                <MyClickable extension="img" index={1} isActive={ this.state.activeIndex===1 } onClick={ this.click }/>
-                <MyClickable extension="video" index={2} isActive={ this.state.activeIndex===2 } onClick={ this.click }/>
+                <MyClickable extension="gif" index={0} isActive={ this.state.activeIndex===0 } onClick={ context.updateExtension }/>
+                <MyClickable extension="jpg" index={1} isActive={ this.state.activeIndex===1 } onClick={ context.updateExtension }/>
+                <MyClickable extension="video" index={2} isActive={ this.state.activeIndex===2 } onClick={ context.updateExtension }/>
             </div>
+                    )}
+            </AppContextConsumer>
         );
     }
 }
 
 class MyClickable extends React.Component {
-    handleClick = () => this.props.onClick(this.props.index, this.props.extension)
-
+    handleClick = () => this.props.onClick(this.props.extension)
     render() {
-        return <button     className={
-            this.props.isActive ? 'active' : 'album'
-        }
-                       onClick={this.handleClick} > {this.props.extension}
+        return <button
+            className={this.props.isActive ? 'active' : 'album'}
+            onClick={this.handleClick} > {this.props.extension}
         </button>
     }
 }
 
-/*
-return <button
-    type='button'
-    className={
-        this.props.isActive ? 'active' : 'album'
-    }
-    onClick={ this.handleClick }
->
-    <span>{ this.props.name }</span>
-</button>
-*/
-
 export default ExtensionUpdater;
-/*
-
-    render(){
-        return(
-            <React.Fragment>
-                <img src={this.state.imageURL} alt="image" />
-            </React.Fragment>
-        )
-    }
- */

@@ -4,12 +4,15 @@ import ImageComponent from "./CentrScreenBlock.js";
 import UploadImgForm from "./UploadImgForm";
 import "./App.css";
 import ExtensionUpdater from "./extensionUpdater";
-import OpenUploadFormBtn from "./OpenUploadFormBtn";
+import {AppContext} from "./AppContext"
+import DeleteBtn from "./deleteBtn";
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
+          <AppContext>
           <header className="App-header">
               <div className="App-header-logo">
                 <img src={logo} className="App-logo" alt="logo" />
@@ -19,6 +22,15 @@ class App extends Component {
               <UploadImgForm/>
           </header>
           <ImageComponent />
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+           <DeleteBtn/>
+          <br/>
+          <br/>
+          <br/>
+          </AppContext>
       </div>
     );
   }

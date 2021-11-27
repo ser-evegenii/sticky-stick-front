@@ -11,7 +11,6 @@ class ImgDetails extends React.Component {
         login: "",
     }
 
-
     render() {
         return  (
             <div className="imgDetails">

@@ -11,26 +11,18 @@ class SwipeButton extends React.Component {
         };
         this.click = this.click.bind(this);
     }
-    onTrigger = (data) => {
-        this.props.parentCallback(data);
-    }
 
-    click(direction) {
-        this.setState({ isLoading: true });
-        axios.get(baseURL+direction.direction, )
-            .then((response) => {
-                this.onTrigger(response.data)
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+    click() {
+        this.props.swipe(this.props.direction)
     }
 
     render() {
-        const {direction} = this.props;
-        const {directionSymbol: directionMark} = this.props;
         return  (
-                <div className="swipeBtnBlock"><button className="swipeBtn" onClick={() => this.click({direction})} > {direction} {directionMark} </button></div>
+                <div className="swipeBtnBlock">
+                    <button className="swipeBtn"
+                    onClick={() => this.click()} > {this.props.direction} {this.props.directionSymbol}
+                    </button>
+                </div>
         );
     }
 }
