@@ -10,15 +10,16 @@ const deleteObjectURI = "http://localhost:4000/delete";
 class AppContext extends Component {
     state = {
         currentId: "",
+        currentLogin: "",
         displayObjURI: "",
     }
 
     swipeRequest = (direction) => {
         axios.get(swipeUrl+direction, )
             .then((response) => {
-                this.state.currentId = response.data
-                this.setState({displayObjURI: loadObjUrl + response.data})
-                console.log(response.data)
+                this.state.currentId = response.data.Id
+                this.setState({displayObjURI: loadObjUrl + response.data.Id})
+                this.setState({currentLogin: response.data.Login})
             })
             .catch((err) => {
                 console.log(err);
@@ -39,10 +40,12 @@ class AppContext extends Component {
             }
         }).then((response) => {
             this.swipeRequest("")
-            console.log(response.data)
+            console.log(response.status)
+            return (response.status)
         })
             .catch((error) => {
                 console.log(error)
+                return 500
             })}
 
     deleteObject = () => {
@@ -72,6 +75,7 @@ class AppContext extends Component {
             <Provider
                 value={{ displayObjURI: this.state.displayObjURI,
                     currentId: this.state.currentId,
+                    currentLogin: this.state.currentLogin,
                     swipeRequest: this.swipeRequest,
                     updateExtension: this.updateExtension,
                     deleteObject: this.deleteObject,

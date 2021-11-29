@@ -17,16 +17,16 @@ class ExtensionUpdater extends React.Component {
 
     }
 
-    //handleClick = (index) => this.setState({ activeIndex: index })
+    handleClick = (index) => this.setState({ activeIndex: index })
 
     render() {
         return  (
             <AppContextConsumer>
                 {context => (
             <div className="updateTypeBlockMain">
-                <MyClickable extension="gif" index={0} isActive={ this.state.activeIndex===0 } onClick={ context.updateExtension }/>
-                <MyClickable extension="jpg" index={1} isActive={ this.state.activeIndex===1 } onClick={ context.updateExtension }/>
-                <MyClickable extension="video" index={2} isActive={ this.state.activeIndex===2 } onClick={ context.updateExtension }/>
+                <MyClickable extension="gif" index={0} isActive={ this.state.activeIndex===0 } onClick={ this.handleClick } updateExtFunc={ context.updateExtension }/>
+                <MyClickable extension="jpg" index={1} isActive={ this.state.activeIndex===1 } onClick={ this.handleClick }  updateExtFunc={ context.updateExtension }/>
+                <MyClickable extension="video" index={2} isActive={ this.state.activeIndex===2 } onClick={ this.handleClick }  updateExtFunc={ context.updateExtension }/>
             </div>
                     )}
             </AppContextConsumer>
@@ -35,7 +35,18 @@ class ExtensionUpdater extends React.Component {
 }
 
 class MyClickable extends React.Component {
-    handleClick = () => this.props.onClick(this.props.extension)
+    constructor(props){
+        super(props);
+        this.state = {
+            activeIndex: null
+        };
+    }
+
+    handleClick = () => {
+        let response = this.props.updateExtFunc(this.props.extension)
+        console.log(response)
+        this.props.onClick(this.props.index)
+    }
     render() {
         return <button
             className={this.props.isActive ? 'active' : 'album'}

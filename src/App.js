@@ -6,6 +6,7 @@ import "./App.css";
 import ExtensionUpdater from "./extensionUpdater";
 import {AppContext} from "./AppContext"
 import DeleteBtn from "./deleteBtn";
+import Heart from "react-animated-heart";
 
 
 class App extends Component {

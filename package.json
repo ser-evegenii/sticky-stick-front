@@ -12,6 +12,7 @@
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.24.0",
     "react": "^16.10.2",
+    "react-animated-heart": "^0.0.7-alpha.1",
     "react-dom": "^16.10.2",
     "react-scripts": "^4.0.3"
   },

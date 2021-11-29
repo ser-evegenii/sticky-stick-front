@@ -44,8 +44,9 @@
 }
 
 .heartBlock {
-    text-align: center;
-    width: 30%;
+    display: flex;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 .heartImg {

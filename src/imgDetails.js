@@ -19,7 +19,7 @@ class ImgDetails extends React.Component {
                         `${this.state.tags.substring(0, 18)}...` : this.state.tags
                     }
                 </p>
-                <p className="login">awesome user</p>
+                <p className="login">{this.props.login}</p>
             </div>
         );
     }
