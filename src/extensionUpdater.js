@@ -1,7 +1,5 @@
-const baseURL = "http://localhost:4000/switch_extension";
-const swipeURL = "http://localhost:4000/swipe?direction=";
 import React from 'react';
-import "./buttons.css"
+import "./styles/buttons.css"
 
 import {AppContextConsumer} from "./AppContext";
 
@@ -10,23 +8,35 @@ class ExtensionUpdater extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            activeIndex: null
+            activeIndex: null,
+            showErr: false
         };
+        this.showError = this.showError.bind(this);
     }
     componentDidMount() {
-
+        this.handleClick(0)
     }
 
     handleClick = (index) => this.setState({ activeIndex: index })
+
+    showError = (status) => {
+        this.setState({ showErr: status })
+    }
 
     render() {
         return  (
             <AppContextConsumer>
                 {context => (
             <div className="updateTypeBlockMain">
-                <MyClickable extension="gif" index={0} isActive={ this.state.activeIndex===0 } onClick={ this.handleClick } updateExtFunc={ context.updateExtension }/>
-                <MyClickable extension="jpg" index={1} isActive={ this.state.activeIndex===1 } onClick={ this.handleClick }  updateExtFunc={ context.updateExtension }/>
-                <MyClickable extension="video" index={2} isActive={ this.state.activeIndex===2 } onClick={ this.handleClick }  updateExtFunc={ context.updateExtension }/>
+                <ul>
+                <MyClickable extension="GIF" index={0} isActive={ this.state.activeIndex===0 } onClick={ this.handleClick } updateExtFunc={ context.updateExtension }
+                             showError={ this.showError }/>
+                <MyClickable extension="JPG" index={1} isActive={ this.state.activeIndex===1 } onClick={ this.handleClick }  updateExtFunc={ context.updateExtension }
+                             showError={ this.showError }/>
+                <MyClickable extension="VIDEO" index={2} isActive={ this.state.activeIndex===2 } onClick={ this.handleClick }  updateExtFunc={ context.updateExtension }
+                             showError={ this.showError }/>
+                    </ul>
+                <p className="errMsgDisabled" style={{ display: this.state.showErr ? 'block' : 'none' }}>Sorry, cant find images with this type</p>
             </div>
                     )}
             </AppContextConsumer>
@@ -42,16 +52,26 @@ class MyClickable extends React.Component {
         };
     }
 
-    handleClick = () => {
-        let response = this.props.updateExtFunc(this.props.extension)
-        console.log(response)
-        this.props.onClick(this.props.index)
+    componentDidMount() {
+        if (this.props.extension === "GIF") {
+            this.handleClick().then(r => {})
+        }
+    }
+
+    handleClick =  async () => {
+        let response = await this.props.updateExtFunc(this.props.extension)
+        if (response === 200) {
+            this.props.onClick(this.props.index)
+            this.props.showError(false)
+        } else {
+            this.props.showError(true)
+        }
     }
     render() {
-        return <button
+        return <li
             className={this.props.isActive ? 'active' : 'album'}
             onClick={this.handleClick} > {this.props.extension}
-        </button>
+        </li>
     }
 }
 

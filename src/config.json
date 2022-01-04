@@ -1,0 +1,8 @@
+{
+  "LOAD_IMG_URI": "http://10.0.2.15:4000/load?id=",
+  "SWIPE_URI": "http://10.0.2.15:4000/swipe?direction=",
+  "UPDATE_EXTENSIONS_URI": "http://10.0.2.15:4000/switch_extension",
+  "DELETE_OBJ_URI": "http://10.0.2.15:4000/delete",
+  "UPDATE_RATING_URI": "http://10.0.2.15:4000/update_rating",
+  "SAVE_URI": "http://10.0.2.15:4000/upload"
+}

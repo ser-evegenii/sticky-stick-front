@@ -1,5 +1,5 @@
 import React from 'react';
-import "./buttons.css";
+import "./styles/buttons.css";
 
 class NickName extends React.Component {
 

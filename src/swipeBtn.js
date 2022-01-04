@@ -1,7 +1,7 @@
-const baseURL = "http://localhost:4000/swipe?direction=";
+
 import React from 'react';
-import axios from 'axios';
-import "./buttons.css";
+import "./styles/buttons.css";
+import arrow from "./icons/arrow.png";
 
 class SwipeButton extends React.Component {
 
@@ -13,14 +13,24 @@ class SwipeButton extends React.Component {
     }
 
     click() {
+        this.props.showSlider(true)
         this.props.swipe(this.props.direction)
+    }
+
+    renderElement(){
+        if(this.props.direction == 'next')
+            return "nextArrowImg"
+        else {
+            return "prevArrowImg"
+        }
     }
 
     render() {
         return  (
                 <div className="swipeBtnBlock">
                     <button className="swipeBtn"
-                    onClick={() => this.click()} > {this.props.direction} {this.props.directionSymbol}
+                    onClick={() => this.click()} >
+                        <img src={arrow} className={this.renderElement()} alt="like" />
                     </button>
                 </div>
         );
@@ -28,13 +38,3 @@ class SwipeButton extends React.Component {
 }
 
 export default SwipeButton;
-/*
-
-    render(){
-        return(
-            <React.Fragment>
-                <img src={this.state.imageURL} alt="image" />
-            </React.Fragment>
-        )
-    }
- */

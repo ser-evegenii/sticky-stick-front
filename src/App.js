@@ -1,38 +1,29 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import ImageComponent from "./CentrScreenBlock.js";
-import UploadImgForm from "./UploadImgForm";
-import "./App.css";
-import ExtensionUpdater from "./extensionUpdater";
-import {AppContext} from "./AppContext"
-import DeleteBtn from "./deleteBtn";
-import Heart from "react-animated-heart";
-
+import "./styles/App.css";
+import MainPage from "./MainPage";
+import configData from "./config.json"
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+} from "react-router-dom";
+import AdminPage from "./AdminPage";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-          <AppContext>
-          <header className="App-header">
-              <div className="App-header-logo">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p style={{color: "black"}}>Logo???</p>
-              </div>
-              <ExtensionUpdater />
-              <UploadImgForm/>
-          </header>
-          <ImageComponent />
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-           <DeleteBtn/>
-          <br/>
-          <br/>
-          <br/>
-          </AppContext>
-      </div>
+        <Router>
+            <div>
+              <Switch>
+                    <Route exact path="/">
+                        <MainPage />
+                    </Route>
+                    <Route path="/administrator">
+                        <AdminPage />
+                    </Route>
+                </Switch>
+            </div>
+        </Router>
     );
   }
 }

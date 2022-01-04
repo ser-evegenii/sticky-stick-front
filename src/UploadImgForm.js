@@ -1,17 +1,19 @@
-import Button from '@material-ui/core/Button';
-import PhotoCamera from '@material-ui/icons/PhotoCamera';
-import IconButton from '@material-ui/core/IconButton';
 import axios from 'axios';
 import React, { Component } from 'react';
-import './App.css';
+import './styles/App.css';
+import configData from "./config.json"
 
 class UploadImgForm extends Component {
     constructor() {
         super();
         this.state = {
             images: [],
-            name: ""
+            name: "",
+            responseCode: false,
+            responseMessage: "none",
+            responseClass: ""
         };
+        this.showResponse = this.showResponse.bind(this);
     }
 
     onImageChange = event => {
@@ -21,23 +23,33 @@ class UploadImgForm extends Component {
         });
     };
 
-    onSubmit = e => {
+    showResponse = (status) => {
+        this.setState({ responseCode: status })
+    }
+
+    onSubmit = async e => {
         e.preventDefault();
         const formData = new FormData();
-        formData.append('image_file', this.state.images[0]);
+        formData.append('name', e.target.name.value);
         formData.append('email', e.target.email.value);
         formData.append('login', e.target.login.value);
-        axios
-            .post(`http://localhost:4000/upload`, formData, {
+        formData.append('source_uri', e.target.sourceUri.value);
+        formData.append('source_owner', e.target.sourceOwner.value);
+        formData.append('extension', e.target.extension.value);
+        this.setState({ responseClass: "emptyUploadResponse"} )
+        await axios
+            .post(configData.SAVE_URI, formData, {
                 headers: { 'Content-Type': 'multipart/form-data' },
             })
             .then(res => {
-                console.log(res.data);
-                console.log(res.status);
+                this.setState({ responseCode: true} )
+                this.setState({ responseMessage: "success"} )
+                this.setState({ responseClass: "successUploadResponse"} )
             })
             .catch(err => {
-                console.log("error")
-                console.log(err);
+                this.setState({ responseCode: false} )
+                this.setState({ responseMessage: "error"} )
+                this.setState({ responseClass: "errorUploadResponse"} )
             });
     };
 
@@ -45,15 +57,25 @@ class UploadImgForm extends Component {
         return (
             <div className="uploadFormDiv">
                 <form onSubmit={this.onSubmit} className="uploadForm">
+                    <label htmlFor="name">Name: </label>
+                    <input type="text" name="name"/>
                     <label htmlFor="email">Email: </label>
                     <input type="text" name="email"/>
-                    <label htmlFor="email">Login: </label>
+                    <label htmlFor="login">Login: </label>
                     <input type="text" name="login"/>
-                    <label htmlFor="image_file">Choose img: </label>
-                    <input type="file" name="image_file" onChange={this.onImageChange} alt="image"/>
+                    <label htmlFor="sourceUri">Source uri: </label>
+                    <input type="text" name="sourceUri"/>
+                    <label htmlFor="sourceOwner">Source owner: </label>
+                    <input type="text" name="sourceOwner"/>
+                    <label htmlFor="extension">Extension: </label>
+                    <input type="text" name="extension"/>
                     <br />
                     <button type="submit">Send</button>
                 </form>
+
+                <div className={this.state.responseClass} id="uploadResponseMessage">
+                    <p>{this.state.responseMessage}</p>
+                </div>
             </div>
         );
     }

@@ -1,25 +1,47 @@
 import React, { Component } from "react";
 import axios from "axios";
-const { Provider, Consumer } = React.createContext();
 
-const loadObjUrl = "http://localhost:4000/load?id="
-const swipeUrl = "http://localhost:4000/swipe?direction="
-const updateExtensionURL = "http://localhost:4000/switch_extension";
-const deleteObjectURI = "http://localhost:4000/delete";
+import configData from "./config.json"
+
+const { Provider, Consumer } = React.createContext();
 
 class AppContext extends Component {
     state = {
         currentId: "",
         currentLogin: "",
         displayObjURI: "",
+        sourceURI: "",
+        sourceUser: "",
+        likes: "",
+        dislikes: "",
+        extension: "",
+        imageIsLoaded: false,
     }
 
     swipeRequest = (direction) => {
-        axios.get(swipeUrl+direction, )
+        axios.get(configData.SWIPE_URI+direction, )
             .then((response) => {
-                this.state.currentId = response.data.Id
-                this.setState({displayObjURI: loadObjUrl + response.data.Id})
-                this.setState({currentLogin: response.data.Login})
+                this.state.currentId = response.data.nextId.Id
+                this.setState({ displayObjURI: configData.LOAD_IMG_URI + response.data.nextId.Id })
+                this.setState({ currentLogin: response.data.nextId.Login })
+                this.setState({ sourceURI: response.data.nextId.SourceURI })
+                this.setState({ sourceUser: response.data.nextId.SourceUser })
+                this.setState({ likes: response.data.rating.Likes })
+                this.setState({ dislikes: response.data.rating.Dislikes })
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    }
+
+    updateRating = (direction, objectId) => {
+        axios.post(configData.UPDATE_RATING_URI, {
+            objectId: objectId,
+            direction: direction
+        })
+            .then((response) => {
+                this.setState({likes: response.data.Likes})
+                this.setState({dislikes: response.data.Dislikes})
             })
             .catch((err) => {
                 console.log(err);
@@ -30,21 +52,21 @@ class AppContext extends Component {
         let data = JSON.stringify({
             "extension": extension,
         })
+        this.setState({ extension: extension })
         // Send a POST request
-        axios({
+        return axios({
             method: 'post',
-            url: updateExtensionURL,
+            url: configData.UPDATE_EXTENSIONS_URI,
             data: data,
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded"
             }
         }).then((response) => {
+
             this.swipeRequest("")
-            console.log(response.status)
             return (response.status)
         })
             .catch((error) => {
-                console.log(error)
                 return 500
             })}
 
@@ -52,23 +74,20 @@ class AppContext extends Component {
         let data = JSON.stringify({
             "objectId": this.state.currentId,
         })
-        console.log(data)
         // Send a POST request
         axios({
             method: 'post',
-            url: deleteObjectURI,
+            url: configData.DELETE_OBJ_URI,
             data: data,
             headers: {
                 "Content-Type": "application/json"
             }
         }).then((response) => {
             this.swipeRequest("")
-            console.log(response.data)
         })
             .catch((error) => {
                 console.log(error.response)
             })}
-
 
     render() {
         return (
@@ -76,9 +95,15 @@ class AppContext extends Component {
                 value={{ displayObjURI: this.state.displayObjURI,
                     currentId: this.state.currentId,
                     currentLogin: this.state.currentLogin,
+                    sourceURI: this.state.sourceURI,
+                    sourceUser: this.state.sourceUser,
+                    likes: this.state.likes,
+                    dislikes: this.state.dislikes,
+                    extension: this.state.extension,
                     swipeRequest: this.swipeRequest,
                     updateExtension: this.updateExtension,
                     deleteObject: this.deleteObject,
+                    updateRating: this.updateRating,
                 }}
             >
                 {this.props.children}
