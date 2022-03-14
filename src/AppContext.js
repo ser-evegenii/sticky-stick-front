@@ -62,7 +62,7 @@ class AppContext extends Component {
                 "Content-Type": "application/x-www-form-urlencoded"
             }
         }).then((response) => {
-
+            console.log(response.data)
             this.swipeRequest("")
             return (response.status)
         })

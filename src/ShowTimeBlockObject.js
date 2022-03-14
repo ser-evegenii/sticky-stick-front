@@ -23,7 +23,7 @@ class ShowTimeBlockObject extends Component {
 
     renderElement() {
         if(this.props.extension === 'VIDEO')
-            return <VideoPlayer url="http://10.0.2.15:4000/load?id=11" />;
+            return <VideoPlayer url={this.props.displayObjURI} />;
         else {
             return (
                 <div>

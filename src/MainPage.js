@@ -7,6 +7,7 @@ import AuthBtn from "./AuthBtn";
 
 class MainPage extends Component {
     render() {
+        console.log(process.env.REACT_APP_LOAD_IMG_URI)
         return (
             <div className="App">
                 <AppContext>
