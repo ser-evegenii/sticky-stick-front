@@ -4,13 +4,14 @@ import axios from "axios";
 import configData from "./config.json"
 
 const { Provider, Consumer } = React.createContext();
+const emptyCookie = "ssid=; expires=Thu, 01 Jan 1970 00:00:00 UTC"
 
 class AppContext extends Component {
     state = {
         currentId: "",
         currentLogin: "",
         displayObjURI: "",
-        sourceURI: "",
+        name: "",
         sourceUser: "",
         likes: "",
         dislikes: "",
@@ -19,12 +20,17 @@ class AppContext extends Component {
     }
 
     swipeRequest = (direction) => {
-        axios.get(configData.SWIPE_URI+direction, )
+        axios.get(configData.SWIPE_URI+direction, {withCredentials: true})
             .then((response) => {
+                if (response.headers.hasOwnProperty("ssid")) {
+                    document.cookie = "ssid=" + response.headers["ssid"];
+                } else {
+                    document.cookie = emptyCookie;
+                }
                 this.state.currentId = response.data.nextId.Id
                 this.setState({ displayObjURI: configData.LOAD_IMG_URI + response.data.nextId.Id })
-                this.setState({ currentLogin: response.data.nextId.Login })
-                this.setState({ sourceURI: response.data.nextId.SourceURI })
+                this.setState({ currentLogin: response.data.nextId.Name })
+                this.setState({ name: response.data.nextId.Name })
                 this.setState({ sourceUser: response.data.nextId.SourceUser })
                 this.setState({ likes: response.data.rating.Likes })
                 this.setState({ dislikes: response.data.rating.Dislikes })
@@ -38,6 +44,10 @@ class AppContext extends Component {
         axios.post(configData.UPDATE_RATING_URI, {
             objectId: objectId,
             direction: direction
+        }, {
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
         })
             .then((response) => {
                 this.setState({likes: response.data.Likes})
@@ -48,11 +58,12 @@ class AppContext extends Component {
             });
     }
 
-    updateExtension = (extension) => {
+    updateExtension = (category) => {
         let data = JSON.stringify({
-            "extension": extension,
+            //TODO: update extension var name to name type
+            "category": category,
         })
-        this.setState({ extension: extension })
+        this.setState({ extension: category })
         // Send a POST request
         return axios({
             method: 'post',
@@ -62,7 +73,6 @@ class AppContext extends Component {
                 "Content-Type": "application/x-www-form-urlencoded"
             }
         }).then((response) => {
-            console.log(response.data)
             this.swipeRequest("")
             return (response.status)
         })
@@ -95,7 +105,7 @@ class AppContext extends Component {
                 value={{ displayObjURI: this.state.displayObjURI,
                     currentId: this.state.currentId,
                     currentLogin: this.state.currentLogin,
-                    sourceURI: this.state.sourceURI,
+                    name: this.state.name,
                     sourceUser: this.state.sourceUser,
                     likes: this.state.likes,
                     dislikes: this.state.dislikes,

@@ -1,8 +1,10 @@
 {
-  "LOAD_IMG_URI": "http://sticky-stickk.ru/api/load?id=",
-  "SWIPE_URI": "http://sticky-stickk.ru/api/swipe?direction=",
-  "UPDATE_EXTENSIONS_URI": "http://sticky-stickk.ru/api/switch_extension",
-  "DELETE_OBJ_URI": "http://sticky-stickk.ru/api/delete",
-  "UPDATE_RATING_URI": "http://sticky-stickk.ru/api/update_rating",
-  "SAVE_URI": "http://sticky-stickk.ru/api/upload"
+  "LOAD_IMG_URI": "http://pizdec.ru:4000/api/load?id=",
+  "SWIPE_URI": "http://pizdec.ru:4000/api/swipe?direction=",
+  "UPDATE_EXTENSIONS_URI": "http://pizdec.ru:4000/api/switch_extension",
+  "DELETE_OBJ_URI": "http://pizdec.ru:4000/api/delete",
+  "UPLOAD_FILE": "http://pizdec.ru:4000/api/upload_with_file",
+  "UPLOAD_FILE_BY_URI": "http://pizdec.ru:4000/api/upload_with_uri",
+  "UPDATE_RATING_URI": "http://pizdec.ru:4000/api/update_rating",
+  "USER_REGISTRATION": "http://pizdec.ru:4000/api/user_registration"
 }

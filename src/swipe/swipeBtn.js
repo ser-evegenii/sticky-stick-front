@@ -1,7 +1,7 @@
 
 import React from 'react';
-import "./styles/buttons.css";
-import arrow from "./icons/arrow.png";
+import "../styles/buttons.css";
+import arrow from "../icons/arrow.png";
 
 class SwipeButton extends React.Component {
 

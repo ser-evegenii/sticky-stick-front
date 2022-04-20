@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import {AppContext} from "./AppContext";
 import logo from "./logo.svg";
-import ExtensionUpdater from "./extensionUpdater";
-import UploadImgForm from "./UploadImgForm";
+import CategoryUpdater from "./swipe/categoryUpdater";
+import UploadImgForm from "./TestPage";
 import ImageComponent from "./CenterScreenBlock";
 import DeleteBtn from "./deleteBtn";
 

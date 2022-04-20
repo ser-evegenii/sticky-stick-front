@@ -1,9 +1,9 @@
 import React from 'react';
-import "./styles/buttons.css"
+import "../styles/buttons.css"
 
-import {AppContextConsumer} from "./AppContext";
+import {AppContextConsumer} from "../AppContext";
 
-class ExtensionUpdater extends React.Component {
+class CategoryUpdater extends React.Component {
 
     constructor(props){
         super(props);
@@ -29,11 +29,9 @@ class ExtensionUpdater extends React.Component {
                 {context => (
             <div className="updateTypeBlockMain">
                 <ul>
-                <MyClickable extension="GIF" index={0} isActive={ this.state.activeIndex===0 } onClick={ this.handleClick } updateExtFunc={ context.updateExtension }
+                <MyClickable extension="image" index={0} isActive={ this.state.activeIndex===0 } onClick={ this.handleClick } updateExtFunc={ context.updateExtension }
                              showError={ this.showError }/>
-                <MyClickable extension="JPG" index={1} isActive={ this.state.activeIndex===1 } onClick={ this.handleClick }  updateExtFunc={ context.updateExtension }
-                             showError={ this.showError }/>
-                <MyClickable extension="VIDEO" index={2} isActive={ this.state.activeIndex===2 } onClick={ this.handleClick }  updateExtFunc={ context.updateExtension }
+                <MyClickable extension="video" index={1} isActive={ this.state.activeIndex===1 } onClick={ this.handleClick }  updateExtFunc={ context.updateExtension }
                              showError={ this.showError }/>
                     </ul>
                 <p className="errMsgDisabled" style={{ display: this.state.showErr ? 'block' : 'none' }}>Sorry, cant find images with this type</p>
@@ -53,7 +51,7 @@ class MyClickable extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.extension === "GIF") {
+        if (this.props.extension === "image") {
             this.handleClick().then(r => {})
         }
     }
@@ -75,4 +73,4 @@ class MyClickable extends React.Component {
     }
 }
 
-export default ExtensionUpdater;
+export default CategoryUpdater;

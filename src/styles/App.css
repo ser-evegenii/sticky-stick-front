@@ -6,6 +6,10 @@ html {
   background-color: #0A0F2B;
 }
 
+#root {
+  background-color: #0A0F2B;
+}
+
 .logo {
   text-align: center;
   margin-right: 500px;
@@ -78,7 +82,7 @@ html {
 .tags {
   margin: 0;
 }
-.login {
+.fileName {
   float: right;
   padding: 0;
   margin: 0;

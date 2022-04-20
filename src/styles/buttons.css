@@ -120,11 +120,6 @@
     background-color: #EFEFEF;
 }
 
-.uploadForm {
-    display: grid;
-    width: 20%;
-}
-
 .uploadForm label{
     margin: 10px;
     color: black;

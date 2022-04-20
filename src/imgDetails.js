@@ -11,7 +11,7 @@ class ImgDetails extends React.Component {
         tags: "#stickystick",
         login: "",
         sourceUser: "",
-        sourceURI: ""
+        Name: ""
     }
 
     render() {
@@ -27,9 +27,9 @@ class ImgDetails extends React.Component {
                     }
                     </p>
                 </div>
-                <div  className="login"><p>Added by:</p><a href="http://google.com"> {this.props.login}</a></div>
+                <div  className="fileName"><p>{this.props.name}</p></div>
                 </div>
-                <div className="objSource"><a href={this.props.sourceUser}>@source</a></div>
+                <div className="objSource"><a href={this.props.sourceUser}>{this.props.sourceUser}</a></div>
             </div>
                     )}
             </AppContextConsumer>

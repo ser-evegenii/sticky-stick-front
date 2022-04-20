@@ -1,13 +1,12 @@
 import React, {Component} from "react";
 import {AppContext} from "./AppContext";
 import logo from "./logo.svg";
-import ExtensionUpdater from "./extensionUpdater";
+import CategoryUpdater from "./swipe/categoryUpdater";
 import ImageComponent from "./CenterScreenBlock";
-import AuthBtn from "./AuthBtn";
+import AuthBtn from "./Auth/AuthBtn";
 
 class MainPage extends Component {
     render() {
-        console.log(process.env.REACT_APP_LOAD_IMG_URI)
         return (
             <div className="App">
                 <AppContext>
