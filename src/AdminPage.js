@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {AppContext} from "./AppContext";
 import logo from "./logo.svg";
-import CategoryUpdater from "./swipe/categoryUpdater";
+import NavigationMenu from "./swipe/navigationMenu";
 import UploadImgForm from "./TestPage";
 import ImageComponent from "./CenterScreenBlock";
 import DeleteBtn from "./deleteBtn";

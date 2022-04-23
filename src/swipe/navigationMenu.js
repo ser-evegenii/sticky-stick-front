@@ -1,9 +1,8 @@
 import React from 'react';
-import "../styles/buttons.css"
 
 import {AppContextConsumer} from "../AppContext";
 
-class CategoryUpdater extends React.Component {
+class NavigationMenu extends React.Component {
 
     constructor(props){
         super(props);
@@ -27,14 +26,14 @@ class CategoryUpdater extends React.Component {
         return  (
             <AppContextConsumer>
                 {context => (
-            <div className="updateTypeBlockMain">
-                <ul>
+            <div className="header-navigation_menu">
+                <div className="header-menu" id="header-menu">
                 <MyClickable extension="image" index={0} isActive={ this.state.activeIndex===0 } onClick={ this.handleClick } updateExtFunc={ context.updateExtension }
                              showError={ this.showError }/>
                 <MyClickable extension="video" index={1} isActive={ this.state.activeIndex===1 } onClick={ this.handleClick }  updateExtFunc={ context.updateExtension }
                              showError={ this.showError }/>
-                    </ul>
                 <p className="errMsgDisabled" style={{ display: this.state.showErr ? 'block' : 'none' }}>Sorry, cant find images with this type</p>
+                </div>
             </div>
                     )}
             </AppContextConsumer>
@@ -66,11 +65,11 @@ class MyClickable extends React.Component {
         }
     }
     render() {
-        return <li
+        return <a
             className={this.props.isActive ? 'active' : 'album'}
             onClick={this.handleClick} > {this.props.extension}
-        </li>
+        </a>
     }
 }
 
-export default CategoryUpdater;
+export default NavigationMenu;

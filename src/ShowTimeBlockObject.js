@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import "./styles/loader.css";
 import VideoPlayer from 'react-simple-video-player';
-
 
 class ShowTimeBlockObject extends Component {
     constructor(props){

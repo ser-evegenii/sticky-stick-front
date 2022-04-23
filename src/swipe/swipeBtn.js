@@ -1,4 +1,3 @@
-
 import React from 'react';
 import "../styles/buttons.css";
 import arrow from "../icons/arrow.png";
@@ -27,12 +26,12 @@ class SwipeButton extends React.Component {
 
     render() {
         return  (
-                <div className="swipeBtnBlock">
-                    <button className="swipeBtn"
-                    onClick={() => this.click()} >
-                        <img src={arrow} className={this.renderElement()} alt="like" />
-                    </button>
-                </div>
+            <div className="swipeBtnBlock">
+                <button className="swipeBtn"
+                        onClick={() => this.click()} >
+                    <img src={arrow} className={this.renderElement()} alt="like" />
+                </button>
+            </div>
         );
     }
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import "./styles/App.css"
 import like from "./icons/like.png";
 
 const openRatingConstant = 20

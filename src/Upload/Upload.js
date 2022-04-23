@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import FileUploadService from "./FileUploadService";
-import "../styles/UploadStules.css"
 import {useHistory} from "react-router-dom";
 
 const Upload = () => {

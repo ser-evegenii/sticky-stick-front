@@ -1,5 +1,4 @@
 import React from 'react';
-import "./styles/App.css"
 import {AppContextConsumer} from "./AppContext";
 
 class ImgDetails extends React.Component {

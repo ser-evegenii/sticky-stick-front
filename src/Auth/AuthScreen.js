@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Form, FormGroup, FormControl, Button } from 'react-bootstrap';
-import "../styles/authPage.css";
 import AuthBtn from "./AuthBtn";
 
 class LoginForm extends Component {

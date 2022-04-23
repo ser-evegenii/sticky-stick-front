@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import ButtonComponent from "./swipe/swipeBtn";
-import "./styles/buttons.css";
 import ImgDetails from "./imgDetails";
 import Rating from "./rating";
 import ShowTimeBlockObject from "./ShowTimeBlockObject";
-import ObjectTypeUpdater from "./swipe/categoryUpdater";
+import NavigationMenu from "./swipe/navigationMenu";
 import LogoIcon from "./logo";
 
 import {AppContextConsumer} from "./AppContext";
@@ -30,12 +29,8 @@ class CenterScreenBlock extends Component {
             <AppContextConsumer>
                 { context => (
             <div className="someTest">
-                <LogoIcon/>
-                <ObjectTypeUpdater />
                 <div className="centerScreen">
                 <React.Fragment>
-                    <ButtonComponent swipe = {context.swipeRequest} directionSymbol = "&laquo;" direction = "previous"
-                                     showSlider = {this.showSlider}/>
                     <div>
                         <ShowTimeBlockObject classname="showTimeObject" displayObjURI = {context.displayObjURI} swipe = {context.swipeRequest}
                                              sliderIsActive = {this.state.sliderIsActive}
@@ -44,8 +39,6 @@ class CenterScreenBlock extends Component {
                         <ImgDetails login={context.currentLogin} name={context.name} sourceUser={context.sourceUser}/>
                         <Rating updateRating = {context.updateRating} currentId = {context.currentId} likes = {context.likes} dislikes = {context.dislikes}/>
                     </div>
-                    <ButtonComponent swipe = {context.swipeRequest} direction = "next" directionSymbol = "&raquo;"
-                                     showSlider = {this.showSlider}/>
                 </React.Fragment>
                 </div>
             </div>

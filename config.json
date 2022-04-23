@@ -1,7 +1,7 @@
 {
-  "LOAD_IMG_URI": "http://10.0.2.15:4000/load?id=",
-  "SWIPE_URI": "http://10.0.2.15:4000/swipe?direction=",
-  "UPDATE_EXTENSIONS_URI": "http://10.0.2.15:4000/switch_extension",
-  "DELETE_OBJ_URI": "http://10.0.2.15:4000/delete",
-  "SAVE_URI": "http://10.0.2.15:4000/upload"
+  "LOAD_IMG_URI": "http://pizdec.ru/api/load?id=",
+  "SWIPE_URI": "http://pizdec.ru/api/swipe?direction=",
+  "UPDATE_EXTENSIONS_URI": "http://pizdec.ru/api/switch_extension",
+  "DELETE_OBJ_URI": "http://pizdec.ru/api/delete",
+  "SAVE_URI": "http://pizdec.ru/api/upload"
 }

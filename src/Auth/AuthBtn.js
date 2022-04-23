@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import "../styles/buttons.css";
-import "../styles/authPage.css";
 import axios from "axios";
 import configData from "../config.json";
 import isEmail from 'validator/lib/isEmail';
@@ -16,7 +14,6 @@ class AuthBtn extends React.Component{
     state = {
         userEmail: "",
     }
-
 
     sendEmail(email) {
         if (!isEmail(email)) {
@@ -45,12 +42,10 @@ class AuthBtn extends React.Component{
 
     render() {
         return (
-            <div className="AuthBtn">
-                <label htmlFor="contained-button-file">
+                <div class="header-logo">
                     <button type="button" className="btn auth-btn btn-lg"
                             onClick={() => this.sendEmail(this.props.email)}>Auth</button>
-                </label>
-            </div>
+                </div>
         );
     }
 }

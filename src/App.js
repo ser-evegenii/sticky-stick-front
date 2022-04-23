@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./styles/App.css";
 import MainPage from "./MainPage";
 import configData from "./config.json"
 import AuthScreen from "./Auth/AuthScreen"
@@ -10,11 +9,12 @@ import {
 } from "react-router-dom";
 import Upload from "./Upload/Upload";
 
+import "./layout/css/styles.css";
+
 class App extends Component {
   render() {
     return (
         <Router>
-            <div>
               <Switch>
                     <Route exact path="/">
                         <MainPage />
@@ -26,7 +26,6 @@ class App extends Component {
                       <AuthScreen />
                   </Route>
                 </Switch>
-            </div>
         </Router>
     );
   }
