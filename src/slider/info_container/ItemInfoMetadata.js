@@ -1,6 +1,6 @@
 import React from 'react';
 
-class InfoInfoMetadata extends React.Component {
+class SliderInfoMetadata extends React.Component {
 
 
     render() {
@@ -19,4 +19,4 @@ class InfoInfoMetadata extends React.Component {
     }
 }
 
-export default InfoInfoMetadata;
+export default SliderInfoMetadata;

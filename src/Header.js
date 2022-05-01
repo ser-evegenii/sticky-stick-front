@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import NavigationMenu from "./swipe/navigationMenu";
 import LogoIcon from "./logo";
 import "./layout/css/styles.css";
-import HeaderAuthorization from "./Auth/Header-authorization";
+import LoginBtn from "./Auth/LoginBtn";
 
 
 class Header extends Component {
@@ -13,7 +13,7 @@ class Header extends Component {
                     <div className="header-inner">
                         <LogoIcon/>
                         <NavigationMenu/>
-                        <HeaderAuthorization/>
+                        <LoginBtn/>
                     </div>
                 </div>
             </header>

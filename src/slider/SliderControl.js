@@ -10,7 +10,8 @@ class SliderControl extends React.Component {
     }
 
     click() {
-        console.log(this.props.direction)
+        this.props.showSlider(true)
+        this.props.swipe(this.props.direction)
     }
 
     render() {

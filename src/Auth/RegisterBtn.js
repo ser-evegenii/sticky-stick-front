@@ -6,7 +6,7 @@ import axios from "axios";
 import configData from "../config.json";
 import isEmail from 'validator/lib/isEmail';
 
-class AuthBtn extends React.Component{
+class RegisterBtn extends React.Component{
     constructor(props){
         super(props);
     }
@@ -50,4 +50,4 @@ class AuthBtn extends React.Component{
     }
 }
 
-export default AuthBtn;
+export default RegisterBtn;

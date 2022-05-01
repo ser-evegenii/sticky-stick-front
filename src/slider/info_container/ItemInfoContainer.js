@@ -1,10 +1,13 @@
 import React from 'react';
 import ItemInfoTags from "./ItemInfoTags"
 import ItemInfoName from "./ItemInfoName";
-import InfoInfoMetadata from "./ItemInfoMetadata";
+import ItemInfoMetadata from "./ItemInfoMetadata";
+import ItemInfoRating from "./ItemInfoRating"
 
 class ItemInfoContainer extends React.Component {
-
+    constructor(props){
+        super(props);
+    }
 
     render() {
         return  (
@@ -16,11 +19,16 @@ class ItemInfoContainer extends React.Component {
 
                         <div className="video-info_title">
                             <ItemInfoTags/>
-                            <ItemInfoName/>
-                            <InfoInfoMetadata/>
+                            <ItemInfoName name={this.props.name}/>
+                            <ItemInfoMetadata/>
                         </div>
 
                     </div>
+
+                    <ItemInfoRating likes={this.props.likes}
+                                    dislikes={this.props.dislikes}
+                                    updateRating={this.props.updateRating}
+                                    currentId = {this.props.currentId}/>
 
                 </div>
 

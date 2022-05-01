@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import MainPage from "./MainPage";
-import configData from "./config.json"
-import AuthScreen from "./Auth/AuthScreen"
+
 import {
     BrowserRouter as Router,
     Switch,
@@ -10,9 +9,10 @@ import {
 import Upload from "./Upload/Upload";
 
 import "./layout/css/styles.css";
+import LoginForm from "./Auth/LoginForm";
 
 class App extends Component {
-  render() {
+    render() {
     return (
         <Router>
               <Switch>
@@ -22,8 +22,8 @@ class App extends Component {
                   <Route path="/admin">
                       <Upload />
                   </Route>
-                  <Route path="/test">
-                      <AuthScreen />
+                  <Route path="/login">
+                      <LoginForm />
                   </Route>
                 </Switch>
         </Router>
