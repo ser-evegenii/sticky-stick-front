@@ -1,0 +1,17 @@
+.homeLink {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: start;
+}
+
+.homeLink__img {
+    transform: rotate(180deg);
+    width: 120px;
+    height: 40px;
+}
+
+.homeLink__img img {
+    width: 100%;
+    height: 100%;
+}

@@ -3,12 +3,11 @@ import React from "react";
 
 
 const LogoIcon = () => {
-
-    return (
-        <div className="logo">
-            <img src={logo} className="imgLogo" alt="logo" />
-        </div>
-    );
+ return (
+  <div className="logo">
+   <img src={logo} className="imgLogo" alt="logo"/>
+  </div>
+ );
 }
 
 export default LogoIcon;

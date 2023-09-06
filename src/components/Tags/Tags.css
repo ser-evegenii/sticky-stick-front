@@ -1,0 +1,27 @@
+.Tags {
+    position: relative;
+}
+
+.Tags__header {
+    position: relative;
+    display: flex;
+    gap: 5px;
+    color: #A29247;
+}
+
+.Tags__headerButton {
+    cursor: pointer;
+}
+
+.Tags__content {
+    color: #A29247;
+    background-color: #0A0F2B;
+}
+
+.Tags__contentWrapper {
+    overflow: hidden;
+    transition: 0.5s ease max-height;
+    top: 0;
+    position: absolute;
+
+}

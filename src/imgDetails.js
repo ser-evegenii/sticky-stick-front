@@ -1,40 +1,33 @@
-import React from 'react';
+import React, {useState} from 'react';
 import "./styles/App.css"
 import {AppContextConsumer} from "./AppContext";
+import {ShareLink} from "./components/ShareLink";
+import {Tags} from "./components/Tags";
 
-class ImgDetails extends React.Component {
+const ImgDetails = (props) => {
 
-    constructor(props){
-        super(props);
-    }
-    state = {
-        tags: "#stickystick",
-        login: "",
-        sourceUser: "",
-        Name: ""
-    }
+ const [state, setState] = useState({
+  tags: ["#stickystick", "#stickystick", "#stickystick", "#stickystick"],
+  login: "",
+  sourceUser: "",
+  name: ""
+ })
 
-    render() {
-        return  (
-            <AppContextConsumer>
-                { context => (
-            <div className="details">
-                <div className="imgDetails">
-                <div className="tags">
-                    <p>
-                    {this.state.tags.length > 18 ?
-                        `${this.state.tags.substring(0, 12)}...` : this.state.tags
-                    }
-                    </p>
-                </div>
-                <div  className="fileName"><p>{this.props.name}</p></div>
-                </div>
-                <div className="objSource"><a href={this.props.sourceUser}>{this.props.sourceUser}</a></div>
-            </div>
-                    )}
-            </AppContextConsumer>
-        );
-    }
+
+ return (
+  <AppContextConsumer>
+   {context => (
+    <div className="details">
+     <div className="imgDetails">
+      <Tags data={state.tags}/>
+      <div className="fileName"><p>{props.name}</p></div>
+      <ShareLink/>
+     </div>
+     {/*<div className="objSource"><a href={props.sourceUser}>{props.sourceUser}</a></div>*/}
+    </div>
+   )}
+  </AppContextConsumer>
+ );
 }
 
 export default ImgDetails;

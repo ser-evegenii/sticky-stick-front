@@ -1,23 +1,27 @@
 import React, {Component} from "react";
 import {AppContext} from "./AppContext";
-import logo from "./logo.svg";
-import CategoryUpdater from "./swipe/categoryUpdater";
 import ImageComponent from "./CenterScreenBlock";
-import AuthBtn from "./Auth/AuthBtn";
+import LogoIcon from "./logo";
+import {AboutProject} from "./features/AboutProject";
+import {AuthLink} from "./features/AuthLink";
 
 class MainPage extends Component {
-    render() {
-        return (
-            <div className="App">
-                <AppContext>
-                    <header className="App-header">
-                        <AuthBtn/>
-                    </header>
-                    <ImageComponent />
-                </AppContext>
-            </div>
-        );
-    }
+ render() {
+  return (
+   <div className="App">
+    <AppContext>
+     <header className="App-header">
+      <div className="App-header__logo">
+       <LogoIcon/>
+       <AboutProject height={350} width={700}/>
+      </div>
+      <AuthLink/>
+     </header>
+     <ImageComponent/>
+    </AppContext>
+   </div>
+  );
+ }
 }
 
 export default MainPage;

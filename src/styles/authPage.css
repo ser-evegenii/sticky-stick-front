@@ -1,12 +1,27 @@
 .LoginPage {
-    max-width: 500px;
-    margin: auto;
-    background: white;
-    padding: 10px;
-    margin-top: 100px;
+    max-width: 1280px;
+    padding: 20px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.AuthBtn {
-    margin-top: 20px;
-    text-align: right;
+.LoginPage__content {
+    display: flex;
+    justify-content: center;
+}
+
+.LoginPage__form {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    width: 100%;
+    color: #fff;
+}
+
+.LoginPage__button {
+    display: flex;
+    justify-content: end;
 }

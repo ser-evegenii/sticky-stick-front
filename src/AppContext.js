@@ -11,7 +11,7 @@ class AppContext extends Component {
         currentId: "",
         currentLogin: "",
         displayObjURI: "",
-        name: "",
+        name: "Name",
         sourceUser: "",
         likes: "",
         dislikes: "",
