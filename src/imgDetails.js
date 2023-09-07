@@ -7,7 +7,7 @@ import {Tags} from "./components/Tags";
 const ImgDetails = (props) => {
 
  const [state, setState] = useState({
-  tags: ["#stickystick", "#stickystick", "#stickystick", "#stickystick"],
+  tags: ["#stickystick", "#anytagTager", "#testTagdadsdasdas", "#small"],
   login: "",
   sourceUser: "",
   name: ""
@@ -20,7 +20,7 @@ const ImgDetails = (props) => {
     <div className="details">
      <div className="imgDetails">
       <Tags data={state.tags}/>
-      <div className="fileName"><p>{props.name}</p></div>
+      <div className="details__name"><p className="details__nameText">{props.name}</p></div>
       <ShareLink/>
      </div>
      {/*<div className="objSource"><a href={props.sourceUser}>{props.sourceUser}</a></div>*/}

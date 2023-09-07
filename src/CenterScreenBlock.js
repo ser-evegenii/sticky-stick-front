@@ -32,8 +32,9 @@ class CenterScreenBlock extends Component {
       <ObjectTypeUpdater/>
       <div className="centerScreen">
        <ButtonComponent swipe={context.swipeRequest} directionSymbol="&laquo;" direction="previous"
+                        className="centerScreen__PrevButton"
                         showSlider={this.showSlider}/>
-       <div>
+       <div className="centerScreen__content">
         <ShowTimeBlockObject classname="showTimeObject" displayObjURI={context.displayObjURI}
                              swipe={context.swipeRequest}
                              sliderIsActive={this.state.sliderIsActive}
@@ -49,6 +50,7 @@ class CenterScreenBlock extends Component {
 
        </div>
        <ButtonComponent swipe={context.swipeRequest} direction="next" directionSymbol="&raquo;"
+                        className="centerScreen__NextButton"
                         showSlider={this.showSlider}/>
       </div>
      </div>

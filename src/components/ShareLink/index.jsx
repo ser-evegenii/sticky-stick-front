@@ -1,11 +1,13 @@
 import React, {useState} from 'react';
 import {useToggleBodyOverflow} from "../../hooks/useToggleBodyOverflow";
+import shareIcon from '../../icons/share.png'
 import cn from "classnames";
 
 import "./ShareLink.css"
 
 export const ShareLink = () => {
  const [isOpen, setIsOpen] = useState(false)
+ const clipboardUrl = "https://www.stickystick.com/some/url"
 
  useToggleBodyOverflow(isOpen)
 
@@ -17,11 +19,21 @@ export const ShareLink = () => {
   setIsOpen(false)
  }
 
+ const handleCopyToClipBoard = () => {
+  navigator.clipboard.writeText(clipboardUrl)
+ }
+
  const modalStyles = cn("shareLink__modal", {["shareLink__modal_opened"]: isOpen})
+
+ const item = <div className="shareLink__contentHeader__SN">
+  <div className="shareLink__contentHeader__SN_icon"></div>
+  <div className="shareLink__contentHeader__SN_text">Соц. сеть</div>
+ </div>
 
  return (
   <div className="shareLink">
    <button onClick={handleOpen} className="shareLink__button">
+    <div className="shareLink__buttonIcon"><img src={shareIcon} alt=""/></div>
     <span>Поделиться</span>
    </button>
    <div className={modalStyles}>
@@ -32,24 +44,20 @@ export const ShareLink = () => {
       <button onClick={handleClose} className="shareLink__button shareLink__button_close">X</button>
      </div>
      <div className="shareLink__content__text">
-      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consequatur deserunt ea magnam maxime neque
-       non numquam officia perferendis quisquam quod repellat ullam unde, vel veritatis. Deleniti praesentium quo
-       voluptas.
+      <div className="shareLink__contentHeader">
+       {item}
+       {item}
+       {item}
+       {item}
+       {item}
+       {item}
       </div>
-      <div>At atque consequatur dolore doloremque, error fugiat illo incidunt magni maiores modi natus nihil nisi
-       nostrum
-       nulla officiis pariatur provident reiciendis repellendus reprehenderit rerum sed temporibus unde vitae. Culpa,
-       iste.
+     </div>
+     <div className="shareLink__content__url">
+      <div>
+       {clipboardUrl}
       </div>
-      <div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae consequatur deserunt ea magnam maxime neque
-       non numquam officia perferendis quisquam quod repellat ullam unde, vel veritatis. Deleniti praesentium quo
-       voluptas.
-      </div>
-      <div>At atque consequatur dolore doloremque, error fugiat illo incidunt magni maiores modi natus nihil nisi
-       nostrum
-       nulla officiis pariatur provident reiciendis repellendus reprehenderit rerum sed temporibus unde vitae. Culpa,
-       iste.
-      </div>
+      <button onClick={handleCopyToClipBoard} className="shareLink__content__urlButton">Копировать</button>
      </div>
     </div>
    </div>

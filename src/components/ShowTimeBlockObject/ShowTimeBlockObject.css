@@ -3,5 +3,21 @@
 }
 
 .ShowTimeBlockObject__imgBack {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 360px;
     background: #fff;
+}
+
+.css-t2klrc {
+    width: 100%;
+}
+
+.css-djit9u {
+    width: 100%;
+}
+
+.videoWrapper {
+    height: 360px;
 }

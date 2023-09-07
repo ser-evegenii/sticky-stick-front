@@ -1,38 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 import "../../styles/loader.css";
 import VideoPlayer from 'react-simple-video-player';
 
 import './ShowTimeBlockObject.css'
 
+const ShowTimeBlockObject = (props) => {
 
-class ShowTimeBlockObject extends Component {
- constructor(props) {
-  super(props);
-  this.updateSliderStatus = this.updateSliderStatus.bind(this)
-  this.renderElement = this.renderElement.bind(this)
+ const updateSliderStatus = () => {
+  props.showSlider(false)
  }
 
- state = {
-  showSlider: false,
- }
+ const renderElement = () => {
+  if (props.extension === 'video')
 
- componentDidMount() {
- }
-
- updateSliderStatus() {
-  this.props.showSlider(false)
- }
-
- renderElement() {
-  if (this.props.extension === 'video')
-
-   return <VideoPlayer url={this.props.displayObjURI}/>;
+   return <div className="videoWrapper">
+    <VideoPlayer url={props.displayObjURI}/>
+   </div>
   else {
    return (
     <div className="ShowTimeBlockObject">
-     <div className="loader" style={{display: this.props.sliderIsActive ? "block" : "none"}}/>
+     <div className="loader" style={{display: props.sliderIsActive ? "block" : "none"}}/>
      <div className="ShowTimeBlockObject__imgBack">
-      <img className={this.props.classname} onLoad={this.updateSliderStatus} src={this.props.displayObjURI}
+      <img className={props.classname} onLoad={updateSliderStatus} src={props.displayObjURI}
            alt="image"/>
      </div>
     </div>
@@ -41,12 +30,12 @@ class ShowTimeBlockObject extends Component {
 
  }
 
- render() {
-  return (
-   <div>{this.renderElement()}
-   </div>
-  )
- }
+
+ return (
+  <div>{renderElement()}
+  </div>
+ )
+
 }
 
 export default ShowTimeBlockObject;

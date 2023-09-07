@@ -10,14 +10,15 @@
     text-decoration: none;
     display: inline-block;
     padding: 8px 16px;
-    height: 400px;
-    width: 500px;
     border: 0;
 }
 
 .swipeBtnBlock {
-    position: relative;
-    top: -30px;
+    position: absolute;
+}
+
+.swipeBtnBlock button {
+    background: unset;
 }
 
 .image {

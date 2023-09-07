@@ -10,12 +10,19 @@
 }
 
 .Tags__headerButton {
+    transition: 0.5s ease opacity;
+    opacity: 1;
     cursor: pointer;
+}
+
+.Tags__headerButton_hide {
+    opacity: 0;
 }
 
 .Tags__content {
     color: #A29247;
     background-color: #0A0F2B;
+    padding: 0 5px 5px 0;
 }
 
 .Tags__contentWrapper {
@@ -23,5 +30,6 @@
     transition: 0.5s ease max-height;
     top: 0;
     position: absolute;
-
+    z-index: 1;
+    padding: 0 5px 5px 0;
 }
