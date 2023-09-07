@@ -17,14 +17,16 @@ const ImgDetails = (props) => {
  return (
   <AppContextConsumer>
    {context => (
-    <div className="details">
-     <div className="imgDetails">
-      <Tags data={state.tags}/>
-      <div className="details__name"><p className="details__nameText">{props.name}</p></div>
-      <ShareLink/>
+    <>
+     <div className="details__name"><p className="details__nameText">{props.name}</p></div>
+     <div className="details">
+      <div className="imgDetails">
+       <Tags data={state.tags}/>
+       <ShareLink/>
+      </div>
      </div>
-     {/*<div className="objSource"><a href={props.sourceUser}>{props.sourceUser}</a></div>*/}
-    </div>
+    </>
+
    )}
   </AppContextConsumer>
  );

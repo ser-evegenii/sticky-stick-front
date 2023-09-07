@@ -1,63 +1,65 @@
-import React, {Component} from 'react';
+import React, {Component, useState} from 'react';
 import ButtonComponent from "./swipe/swipeBtn";
 import "./styles/buttons.css";
 import ImgDetails from "./imgDetails";
 import Rating from "./rating";
 import ShowTimeBlockObject from "./components/ShowTimeBlockObject/ShowTimeBlockObject";
 import ObjectTypeUpdater from "./swipe/categoryUpdater";
+import "./styles/App.css"
 
 import {AppContextConsumer} from "./AppContext";
+import like from "./icons/like.png";
 
-class CenterScreenBlock extends Component {
- constructor(props) {
-  super(props);
-  this.showSlider = this.showSlider.bind(this)
- }
+const CenterScreenBlock = (props) => {
 
- state = {
+ const [state, setState] = useState({
   displayObjURI: "",
   currentId: "",
   sliderIsActive: false
+ })
+
+
+ const showSlider = (isActive) => {
+  setState(prevState => ({...prevState, sliderIsActive: isActive}))
  }
 
- showSlider(isActive) {
-  this.setState({sliderIsActive: isActive})
- }
+ const likeElement = <img src={like} className="likeImg" alt="like"/>
+ const dislikeElement = <img src={like} className="disLikeImg" alt="blue_heart"/>
 
- render() {
-  return (
-   <AppContextConsumer>
-    {context => (
-     <div className="someTest">
-      <ObjectTypeUpdater/>
-      <div className="centerScreen">
-       <ButtonComponent swipe={context.swipeRequest} directionSymbol="&laquo;" direction="previous"
-                        className="centerScreen__PrevButton"
-                        showSlider={this.showSlider}/>
-       <div className="centerScreen__content">
-        <ShowTimeBlockObject classname="showTimeObject" displayObjURI={context.displayObjURI}
-                             swipe={context.swipeRequest}
-                             sliderIsActive={this.state.sliderIsActive}
-                             showSlider={this.showSlider}
-                             extension={context.extension}/>
-        <ImgDetails login={context.currentLogin} name={context.name} sourceUser={context.sourceUser}/>
-        <Rating updateRating={context.updateRating} currentId={context.currentId} likes={context.likes}
-                dislikes={context.dislikes}/>
-        <div className="centerScreen__commentInput">
-         <textarea disabled value="Write some comment"/>
-         <button disabled>add</button>
-        </div>
-
+ return (
+  <AppContextConsumer>
+   {context => (
+    <div className="someTest">
+     <ObjectTypeUpdater/>
+     <div className="centerScreen">
+      <ButtonComponent swipe={context.swipeRequest} directionSymbol="&laquo;" direction="previous"
+                       className="centerScreen__PrevButton"
+                       showSlider={showSlider}/>
+      <div className="centerScreen__content">
+       <ShowTimeBlockObject classname="showTimeObject" displayObjURI={context.displayObjURI}
+                            swipe={context.swipeRequest}
+                            sliderIsActive={state.sliderIsActive}
+                            showSlider={showSlider}
+                            extension={context.extension}/>
+       <ImgDetails login={context.currentLogin} name={context.name} sourceUser={context.sourceUser}/>
+       <Rating likeNode={likeElement} dislikeNode={dislikeElement} updateRating={context.updateRating}
+               currentId={context.currentId}
+               likes={context.likes}
+               dislikes={context.dislikes}/>
+       <div className="centerScreen__commentInput">
+        <textarea disabled value="Write some comment"/>
+        <button disabled>add</button>
        </div>
-       <ButtonComponent swipe={context.swipeRequest} direction="next" directionSymbol="&raquo;"
-                        className="centerScreen__NextButton"
-                        showSlider={this.showSlider}/>
+       <div/>
       </div>
+      <ButtonComponent swipe={context.swipeRequest} direction="next" directionSymbol="&raquo;"
+                       className="centerScreen__NextButton"
+                       showSlider={showSlider}/>
      </div>
-    )}
-   </AppContextConsumer>
-  )
- }
+    </div>
+   )}
+  </AppContextConsumer>
+ )
 }
 
 export default CenterScreenBlock;

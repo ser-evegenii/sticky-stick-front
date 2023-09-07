@@ -1,3 +1,23 @@
+.coppyid {
+    opacity: 0;
+    visibility: hidden;
+    color: black;
+    background: white;
+    border-radius: 12px;
+    padding: 12px;
+    z-index: 100;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    transition: 0.5s ease opacity, 0.5s ease visibility;
+}
+
+.coppyid__open {
+    opacity: 1;
+    visibility: visible;
+}
+
+
 .shareLink {
 
 }
@@ -16,6 +36,9 @@
 }
 
 .shareLink__buttonIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 25px;
     height: 25px;
     color: white;
@@ -49,7 +72,7 @@
     right: 0;
     opacity: 0;
     visibility: hidden;
-    transition: 0.2s ease opacity, 0.2s ease visibility;
+    transition: 0.5s ease opacity, 0.5s ease visibility;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,7 +86,7 @@
 }
 
 .shareLink__overlay {
-    opacity: 0.2;
+    opacity: 0.7;
     background: #000;
     position: absolute;
     height: 100%;
@@ -113,6 +136,7 @@
 .shareLink__content__slideBtn_left {
     left: -10px;
 }
+
 .shareLink__content__slideBtn_right {
     right: -10px;
 }

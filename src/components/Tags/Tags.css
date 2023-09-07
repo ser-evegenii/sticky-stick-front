@@ -22,7 +22,7 @@
 .Tags__content {
     color: #A29247;
     background-color: #0A0F2B;
-    padding: 0 5px 5px 0;
+
 }
 
 .Tags__contentWrapper {
@@ -31,5 +31,5 @@
     top: 0;
     position: absolute;
     z-index: 1;
-    padding: 0 5px 5px 0;
+
 }

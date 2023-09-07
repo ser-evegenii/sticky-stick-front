@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Form} from 'react-bootstrap';
 import "../../styles/authPage.css";
 import AuthBtn from "./AuthBtn";
-import {HomeLink} from "../../features/HomeLink";
+import {HomeLink} from "../HomeLink";
 
 class LoginForm extends Component {
  constructor(props) {

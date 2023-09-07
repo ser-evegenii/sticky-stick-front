@@ -29,7 +29,7 @@ export const Tags = (props) => {
  return (
   <div className="Tags" ref={tagsRef}>
    <div className="Tags__header">
-    <span>{props.data[0].length > 10 ? `${props.data[0].slice(0, 10)}...` : props.data[0]}</span>
+    <span>{props.data[0].length > 10 && props.data.length > 1 ? `${props.data[0].slice(0, 10)}...` : props.data[0]}</span>
     {props.data.length > 1 && <div onClick={handleToggleState} className={tagsHeaderButtonClasses}>>></div>}
    </div>
    {props.data.length > 1 &&

@@ -50,8 +50,8 @@
 
 .hearts {
     display: flex;
-    justify-content: space-around;
-    gap: 5px;
+    margin: 0 auto;
+    gap: 50px;
     position: relative;
 }
 
@@ -90,9 +90,11 @@
 
 .updateTypeBlockMain ul {
     list-style: none;
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
     border-radius: 10px;
-    background: white;
     padding: 0;
 }
 
@@ -162,22 +164,23 @@
 
 .auth-btn {
     background-color: #201C39 !important;
-    border-color: #EEF509 #EEF509 !important;
+    border-color: #EEF509 !important;
     color: #fff !important;
     text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.62);
     border-radius: 5px !important;
     border-width: 2px !important;
+    transition: 0.5s ease background-color, 0.5s ease color;
 }
 
 .auth-btn:hover {
 
     background-color: #A29247 !important;
-    border-color: #EEF509 #EEF509 !important;
     color: #333 !important;
     text-shadow: 0 1px 1px rgba(255, 255, 255, 0.59);
 }
 
 .noneBtn {
+    padding: 0;
     background-color: transparent;
     background-repeat: no-repeat;
     border: none;

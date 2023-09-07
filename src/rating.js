@@ -1,6 +1,5 @@
 import React from 'react';
 import "./styles/App.css"
-import like from "./icons/like.png";
 
 const OPEN_RATING = 20
 
@@ -21,7 +20,7 @@ class Rating extends React.Component {
     <div className="heartBlock">
      <button className="noneBtn"
              onClick={() => this.click("+")}>
-      <img src={like} className="likeImg" alt="like"/>
+      {this.props.likeNode}
      </button>
      <p>{this.props.likes > OPEN_RATING ?
       `${this.props.likes}` : ""
@@ -30,7 +29,7 @@ class Rating extends React.Component {
     <div className="heartBlock">
      <button className="noneBtn"
              onClick={() => this.click("-")}>
-      <img src={like} className="disLikeImg" alt="blue_heart"/>
+      {this.props.dislikeNode}
      </button>
      <p>{this.props.dislikes > OPEN_RATING ?
       `${this.props.dislikes}` : ""

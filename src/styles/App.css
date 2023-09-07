@@ -152,7 +152,7 @@ html {
 
 .imgDetails {
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: space-between;
 }
 
@@ -170,14 +170,15 @@ html {
 }
 
 .details__name {
-    position: absolute;
-    left: 50%;
-
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #A29247;
 }
 
 .details__nameText {
     position: relative;
-    right: 50%;
+    margin: 0;
 }
 
 .login a {

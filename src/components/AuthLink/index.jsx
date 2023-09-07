@@ -3,7 +3,7 @@ import "./AuthLink.css"
 import {Link} from "react-router-dom";
 
 export const AuthLink = () => (
- <Link to="/auth" className="authLink">
+ <Link to="/auth" className="authLink auth-btn">
   auth
  </Link>
 );

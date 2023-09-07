@@ -2,8 +2,8 @@ import React, {Component} from "react";
 import {AppContext} from "./AppContext";
 import ImageComponent from "./CenterScreenBlock";
 import LogoIcon from "./logo";
-import {AboutProject} from "./features/AboutProject";
-import {AuthLink} from "./features/AuthLink";
+import {AboutProject} from "./components/AboutProject";
+import {AuthLink} from "./components/AuthLink";
 
 class MainPage extends Component {
  render() {
