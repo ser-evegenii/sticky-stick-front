@@ -11,7 +11,7 @@ const ShowTimeBlockObject = (props) => {
 
  const [disabledIcon, setDisabledIcon] = useState(false);
 
- const [imgUrl, setState] = useState("https://www.ddtoursdubai.com/images/gallery/IMG-Worlds-of-Adventure-Ramadan-Promotions-Image.jpg")
+ const [imgUrl, setState] = useState("")
 
  const updateSliderStatus = () => {
   props.showSlider(false)
