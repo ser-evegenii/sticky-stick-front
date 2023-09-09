@@ -1,4 +1,4 @@
-import React, {Component, useState} from 'react';
+import React, {useState} from 'react';
 import ButtonComponent from "./swipe/swipeBtn";
 import "./styles/buttons.css";
 import ImgDetails from "./imgDetails";
@@ -9,6 +9,7 @@ import "./styles/App.css"
 
 import {AppContextConsumer} from "./AppContext";
 import like from "./icons/like.png";
+import {ShareLink} from "./components/ShareLink";
 
 const CenterScreenBlock = (props) => {
 
@@ -31,6 +32,10 @@ const CenterScreenBlock = (props) => {
    {context => (
     <div className="someTest">
      <ObjectTypeUpdater/>
+     <div className="shareLinkBlock">
+      <ShareLink/>
+     </div>
+
      <div className="centerScreen">
       <ButtonComponent swipe={context.swipeRequest} directionSymbol="&laquo;" direction="previous"
                        className="centerScreen__PrevButton"

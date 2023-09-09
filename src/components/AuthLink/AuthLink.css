@@ -1,3 +1,31 @@
+.authLink__main {
+    position: relative;
+}
+
+.authLink__form {
+    /*border-radius: 12px;*/
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 43px;
+    width: 270px;
+    background-color: #0A0F2B;
+    right: -10px;
+    transition: 0.5s ease opacity, 0.5s ease visibility;
+
+
+}
+
+.authLink__form__open {
+    opacity: 1;
+    visibility: visible;
+}
+
+
 .authLink {
     box-sizing: border-box;
     padding: 8px 16px;
@@ -6,4 +34,30 @@
     text-decoration: none;
     color: #fff;
     border-radius: 5px;
+}
+
+.authLink_mobile {
+    display: none
+}
+
+.authLink_desktop {
+    display: flex;
+}
+
+.buttonSubmitClassName button {
+    padding: 4px 6px;
+}
+
+@media screen and (max-width: 886px) {
+    .authLink_mobile {
+        display: flex;
+    }
+
+    .authLink_desktop {
+        display: none;
+    }
+
+    .authLink__form {
+        display: none;
+    }
 }

@@ -31,7 +31,7 @@ html {
 .App-header {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
     padding: 10px 0;
     color: white;
 
@@ -72,6 +72,17 @@ html {
     }
 }
 
+.shareLinkBlock {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    max-width: 700px;
+    margin: 0 auto;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+
 .centerScreen {
     position: relative;
     display: flex;
@@ -82,14 +93,12 @@ html {
 }
 
 .centerScreen__PrevButton {
-    background: #0A0F2B;
     z-index: 1;
     top: 160px;
     left: -90px;
 }
 
 .centerScreen__NextButton {
-    background: #0A0F2B;
     z-index: 1;
     top: 160px;
     right: -90px;
@@ -97,17 +106,29 @@ html {
 
 @media screen and (max-width: 886px) {
     .centerScreen__PrevButton {
-        background: #0A0F2B;
         z-index: 1;
-        top: 160px;
+        top: 120px;
         left: -1px;
     }
 
+    .centerScreen__PrevButton button {
+        padding: 50px 50px 50px 25px;
+    }
+
+
+    .swipeBtnBlock button img {
+        width: 25px;
+        height: 25px;
+    }
+
     .centerScreen__NextButton {
-        background: #0A0F2B;
         z-index: 1;
-        top: 160px;
+        top: 120px;
         right: -1px;
+    }
+
+    .centerScreen__NextButton button {
+        padding: 50px 25px 50px 50px;
     }
 }
 
@@ -169,7 +190,13 @@ html {
     margin: 0;
 }
 
+.details__main {
+    position: relative;
+}
+
 .details__name {
+    position: absolute;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;

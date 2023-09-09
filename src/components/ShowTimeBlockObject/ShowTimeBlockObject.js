@@ -18,7 +18,7 @@ const ShowTimeBlockObject = (props) => {
  }
 
  useEffect(() => {
-  if (props.displayObjURI !== "" && props.displayObjURI !== imgUrl) {
+  if (props.displayObjURI !== imgUrl) {
    setState(props.displayObjURI)
    setDisabledIcon(false)
    updateSliderStatus()
@@ -72,9 +72,11 @@ const ShowTimeBlockObject = (props) => {
      <div className={loaderClasses}/>
      <div className={errorClasses}>ERROR</div>
      <div className="ShowTimeBlockObject__imgBack">
-      <img className={imgClasses} onLoad={updateSliderStatus}
-           src={imgUrl}
-           alt="image"/>
+      {imgUrl === "" ? <div className="ShowTimeBlockObject__imgBackWhiteList"/> :
+       <img className={imgClasses} onLoad={updateSliderStatus}
+            src={imgUrl}
+            alt="image"/>
+      }
      </div>
     </div>
    )

@@ -47,7 +47,7 @@ class AuthBtn extends React.Component {
 
 
    <button type="button" className="btn auth-btn btn-lg"
-           onClick={() => this.sendEmail(this.props.email)}>Auth
+           onClick={() => this.sendEmail(this.props.email)}>Submit
    </button>
 
   );

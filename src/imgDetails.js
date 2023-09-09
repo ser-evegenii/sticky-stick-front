@@ -17,15 +17,15 @@ const ImgDetails = (props) => {
  return (
   <AppContextConsumer>
    {context => (
-    <>
+    <div className="details__main">
      <div className="details__name"><p className="details__nameText">{props.name}</p></div>
      <div className="details">
       <div className="imgDetails">
        <Tags data={state.tags}/>
-       <ShareLink/>
+
       </div>
      </div>
-    </>
+    </div>
 
    )}
   </AppContextConsumer>
