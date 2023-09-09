@@ -5,7 +5,8 @@ import VideoPlayer from 'react-simple-video-player';
 import './ShowTimeBlockObject.css'
 import cn from "classnames";
 
-const HIDING_IMAGE_LONG_LOADING_TIME = 5
+const HIDING_IMAGE_LONG_LOADING_TIME_SECONDS = 60
+const SLIDER_TIMEOUT_NOT_LOADED_IMG_SECONDS = 5
 
 const ShowTimeBlockObject = (props) => {
 
@@ -16,13 +17,29 @@ const ShowTimeBlockObject = (props) => {
  const updateSliderStatus = () => {
   props.showSlider(false)
  }
+ const handleActiveSliderStatus = () => {
+  props.showSlider(true)
+ }
 
  useEffect(() => {
+  let timeoutId;
+
+  if (props.displayObjURI === "") {
+   timeoutId = setTimeout(() => {
+    handleActiveSliderStatus()
+   }, SLIDER_TIMEOUT_NOT_LOADED_IMG_SECONDS * 1000)
+  }
+
   if (props.displayObjURI !== imgUrl) {
+   clearTimeout(timeoutId)
    setState(props.displayObjURI)
    setDisabledIcon(false)
    updateSliderStatus()
   }
+
+  return () => {
+   clearTimeout(timeoutId);
+  };
  }, [props.displayObjURI]);
 
 
@@ -33,7 +50,7 @@ const ShowTimeBlockObject = (props) => {
   const setDisabledIconAfterTimeout = () => {
    timeoutId = setTimeout(() => {
     setDisabledIcon(true);
-   }, HIDING_IMAGE_LONG_LOADING_TIME * 1000);
+   }, HIDING_IMAGE_LONG_LOADING_TIME_SECONDS * 1000);
   };
 
 
