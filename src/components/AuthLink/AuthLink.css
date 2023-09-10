@@ -1,5 +1,6 @@
 .authLink__main {
     position: relative;
+    margin-top: 40px;
 }
 
 .authLink__form {
@@ -57,7 +58,7 @@
         display: none;
     }
 
-    .authLink__form {
-        display: none;
-    }
+    /*.authLink__form {*/
+    /*    display: none;*/
+    /*}*/
 }

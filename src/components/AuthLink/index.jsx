@@ -25,10 +25,10 @@ export const AuthLink = () => {
 
  return (
   <div className="authLink__main" ref={tagsRef}>
-   <Link to="/auth" className="authLink authLink_mobile auth-btn" key="mobile" onClick={handleClose}>
-    auth
-   </Link>
-   <button className="authLink auth-btn authLink_desktop" onClick={handleToggle} key="desktop">
+   {/*<Link to="/auth" className="authLink authLink_mobile auth-btn" key="mobile" onClick={handleClose}>*/}
+   {/* auth*/}
+   {/*</Link>*/}
+   <button className="authLink auth-btn " onClick={handleToggle} key="desktop">
     auth
    </button>
    <div className={formClasses}>
