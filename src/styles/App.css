@@ -145,6 +145,7 @@ html {
 }
 
 .centerScreen__commentInput {
+
     display: flex;
     justify-content: center;
     align-items: end;
@@ -153,6 +154,7 @@ html {
 
 .centerScreen__commentInput textarea {
     resize: none;
+    width: 100%;
 }
 
 .centerScreen__commentInput button {
