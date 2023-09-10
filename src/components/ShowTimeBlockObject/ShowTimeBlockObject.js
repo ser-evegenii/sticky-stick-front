@@ -12,7 +12,7 @@ const ShowTimeBlockObject = (props) => {
 
  const [disabledIcon, setDisabledIcon] = useState(false);
 
- const [imgUrl, setState] = useState("https://www.clipartmax.com/png/small/180-1809318_picture-300-x-300-pixel.png")
+ const [imgUrl, setState] = useState("")
 
  const updateSliderStatus = () => {
   props.showSlider(false)
@@ -32,7 +32,7 @@ const ShowTimeBlockObject = (props) => {
 
   if (props.displayObjURI !== imgUrl) {
    clearTimeout(timeoutId)
-   // setState(props.displayObjURI)
+   setState(props.displayObjURI)
    setDisabledIcon(false)
    updateSliderStatus()
   }
